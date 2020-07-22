@@ -12,7 +12,7 @@ public class CalculatorActivity extends AppCompatActivity  {
 
     Button button,button_1,button_2,button_3,button_4,button_5,button_6,button_7,button_8,button_9,button_0,button_equal,button_del,button_divide,button_multiply,button_subtraction,button_addition,button_dot;
     TextView solution, showResult;
-    double num_b = 0, num_a = 0, num_c =0 ;
+    String num_1,num_2,num_3;
     boolean addition,subtraction,multiply,divide,deci, startNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +42,14 @@ public class CalculatorActivity extends AppCompatActivity  {
 
         startNum = true;
         deci=false;
+        num_1="";
+        num_2="";
+        num_3="";
 
         button_0.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 0);
+                num_2 = num_2+ "0";
                 solution.setText(solution.getText()+ "0");
                 solve();
             }
@@ -55,7 +58,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 1);
+                num_2 = num_2+ "1";
                 solution.setText(solution.getText()+ "1");
                 solve();
             }
@@ -64,7 +67,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 2);
+                num_2 = num_2+ "2";
                 solution.setText(solution.getText()+ "2");
                 solve();
             }
@@ -73,7 +76,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_3.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 3);
+                num_2 = num_2+ "3";
                 solution.setText(solution.getText()+ "3");
                 solve();
             }
@@ -82,7 +85,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_4.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 4);
+                num_2 = num_2+ "4";
                 solution.setText(solution.getText()+ "4");
                 solve();
             }
@@ -91,7 +94,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_5.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 5);
+                num_2 = num_2+ "5";
                 solution.setText(solution.getText()+ "5");
                 solve();
             }
@@ -100,7 +103,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_6.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 6);
+                num_2 = num_2+ "6";
                 solution.setText(solution.getText()+ "6");
                 solve();
             }
@@ -109,7 +112,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_7.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 7);
+                num_2 = num_2+ "7";
                 solution.setText(solution.getText()+ "7");
                 solve();
             }
@@ -118,7 +121,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_8.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 8);
+                num_2 = num_2+ "8";
                 solution.setText(solution.getText()+ "8");
                 solve();
             }
@@ -127,7 +130,7 @@ public class CalculatorActivity extends AppCompatActivity  {
         button_9.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_b = Double.parseDouble(String.valueOf(num_b)+ 9);
+                num_2 = num_2+ "9";
                 solution.setText(solution.getText()+ "9");
                 solve();
             }
@@ -137,7 +140,7 @@ public class CalculatorActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 if(!deci) {
-                    num_b = num_b + Float.parseFloat(".");
+                   num_2=num_2+".";
                     solution.setText(solution.getText() + ".");
                     deci=true;
                 }
@@ -150,13 +153,13 @@ public class CalculatorActivity extends AppCompatActivity  {
                 if(solution.getText().length() != 0 && !addition){
 
                     if(startNum){
-                        num_a = num_b;
+                        num_1 = num_2;
 
                     }else{
-                        num_a=num_c;
+                        num_1=num_3;
                     }
-                    num_b =0;
-                    solution.setText(solution.getText() + " + ");
+                    num_2 ="0";
+                    solution.setText(solution.getText() + "+");
 
                     deci=false;
                     addition = true;
@@ -174,14 +177,14 @@ public class CalculatorActivity extends AppCompatActivity  {
                 if(solution.getText().length() != 0 && !subtraction){
 
                     if(startNum){
-                        num_a = num_b;
+                        num_1 = num_2;
 
                     }else{
-                        num_a=num_c;
+                        num_1=num_3;
                     }
-                    num_b =0;
+                    num_2 ="0";
 
-                    solution.setText(solution.getText() + " - ");
+                    solution.setText(solution.getText() + "-");
 
                     deci=false;
                     addition = false;
@@ -197,14 +200,15 @@ public class CalculatorActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 if(solution.getText().length() != 0 && !multiply){
-                    solution.setText(solution.getText() + " x ");
+                    solution.setText(solution.getText() + "x");
 
                     if(startNum){
-                        num_a = num_b;
-                        num_b =0;
+                        num_1 = num_2;
+
                     }else{
-                        num_a=num_c;
+                        num_1=num_3;
                     }
+                    num_2 ="0";
 
                     deci=false;
                     addition = false;
@@ -220,14 +224,15 @@ public class CalculatorActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 if(solution.getText().length() != 0 && !divide){
-                    solution.setText(solution.getText() + " / ");
+                    solution.setText(solution.getText() + "/");
 
                     if(startNum){
-                        num_a = num_b;
+                        num_1 = num_2;
+
                     }else{
-                        num_a=num_c;
+                        num_1=num_3;
                     }
-                    num_b =0;
+                    num_2 ="0";
 
                     deci=false;
                     addition = false;
@@ -245,11 +250,12 @@ public class CalculatorActivity extends AppCompatActivity  {
                 if(solution.getText().length() != 0 ) {
                     if (addition || subtraction || multiply || divide) {
                         if(startNum){
-                            num_a = num_b;
+                            num_1 = num_2;
+
                         }else{
-                            num_a=num_c;
+                            num_1=num_3;
                         }
-                        num_b =0;
+                        num_2 ="0";
                         deci=false;
                     }
                 }
@@ -260,17 +266,17 @@ public class CalculatorActivity extends AppCompatActivity  {
 
     private void solve() {
         if(addition){
-            num_c = num_a + num_b;
+            num_3 = Double.toString(Double.parseDouble(num_1) + Double.parseDouble(num_2));
         }
         if(subtraction){
-            num_c = num_a - num_b;
+            num_3 = Double.toString(Double.parseDouble(num_1) - Double.parseDouble(num_2));
         }
         if(multiply){
-            num_c = num_a * num_b;
+            num_3 = Double.toString(Double.parseDouble(num_1) * Double.parseDouble(num_2));
         }
         if(divide){
-            num_c = num_a / num_b;
+            num_3 = Double.toString(Double.parseDouble(num_1) / Double.parseDouble(num_2));
         }
-        showResult.setText(Double.toString(num_c));
+        showResult.setText(num_3);
     }
 }
