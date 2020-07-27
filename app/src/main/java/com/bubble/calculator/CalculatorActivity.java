@@ -261,8 +261,8 @@ public class CalculatorActivity extends AppCompatActivity {
                 num_b = "";
 
             } else {
-                num_b = num_b + ch;
-                solve(operator);
+                num_b += ch;
+                solve();
             }
 
             lastChar = ch;
@@ -300,7 +300,7 @@ public class CalculatorActivity extends AppCompatActivity {
         }
     }
 
-    private void solve(char operator) {
+    private void solve() {
         if (addition) {
             num_c = Double.toString(Double.parseDouble(num_a) + Double.parseDouble(num_b)).trim();
         }
