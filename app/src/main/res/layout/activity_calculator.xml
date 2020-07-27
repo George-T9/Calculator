@@ -18,13 +18,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:maxLines="1"
+                android:maxLines="2"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
                 android:paddingLeft="20dp"
                 android:paddingBottom="15dp"
+                android:maxLength="35"
+                android:gravity="end"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:gravity="end|center" />
+                android:layout_gravity="end" />
             <TextView
                 android:id="@+id/TV_result"
                 android:layout_width="match_parent"
